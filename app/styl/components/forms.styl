@@ -1,0 +1,61 @@
+@import "nib"
+@import "vars"
+@import "mixins"
+
+*::placeholder { color: dark-grey; }
+*::-webkit-input-placeholder { color: dark-grey; }
+*:-moz-placeholder { color: dark-grey; }
+*::-moz-placeholder { color: dark-grey; }
+*:-ms-input-placeholder { color: dark-grey; }
+
+
+textarea
+  resize: none;
+  -webkit-appearance: none;
+
+input[type="file"]
+input[type="radio"]
+  display none
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0
+
+input[type="text"]
+input[type="tel"]
+input[type="email"]
+input[type="number"]
+input[type="password"]
+  -webkit-appearance: none;
+  border-right: 0;
+  appearance: none;
+
+input[type=text]::-ms-clear {  display: none; width : 0; height: 0; }
+input[type=text]::-ms-reveal {  display: none; width : 0; height: 0; }
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+input[type="password"]::-ms-reveal {display: none;}
+
+input[type="number"]
+  -moz-appearance: textfield
+  border none
+  outline none
+
+input[type="submit"]
+  border: 0;
+  width: 100%;
+  border-radius: 4px;
+  padding: 20px 39px;
+  outline: 0;
+  font-size: 18px;
+  transition: all 0.5s ease;
+  background-color: #d4301a;
+  cursor: pointer;
+  margin: 0;
+  color: white;
+

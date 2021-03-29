@@ -1,0 +1,30 @@
+font-path = '../fonts/'
+
+mx-font-face($name, $src, $weight = false, $style = false)
+  @font-face
+    font-family $name
+    src: url(font-path + $src + '.woff2') format("woff2"),
+            url(font-path + $src + '.woff2') format("woff");
+    font-weight $weight if $weight
+    font-style $style if $style
+
+font-face ?= mx-font-face
+
+//font-face('name', 'src', weight, style)
+
+normalize_list()
+  padding 0
+  margin 0
+  list-style-type none
+
+clear_display_inlines()
+  font-size 0
+  > *
+    vertical-align top
+    display inline-block
+    font-size inherit
+
+truncate_text()
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
