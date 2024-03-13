@@ -1,7 +1,7 @@
   > *`$ npm i`*
 >
 for development:
-  > *`$ npm run start`*
+  > *`$ npm run dev`*
 >  
 for production:  
   > *`$ npm run build`*

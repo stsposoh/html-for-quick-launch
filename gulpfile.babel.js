@@ -1,8 +1,8 @@
 'use strict';
 
 import {src, dest, lastRun, watch, series, parallel} from 'gulp';
-import stylus from 'gulp-stylus';
-import nib from 'nib';
+import dartSass from 'sass';
+import gulpSass from 'gulp-sass';
 import debug from 'gulp-debug';
 import plumber from 'gulp-plumber';
 import browserSync from 'browser-sync';
@@ -23,6 +23,7 @@ import svgSprite from 'gulp-svg-sprite';
 
 const PRODUCTION = yargs.argv.prod;
 const server = browserSync.create();
+const sass = gulpSass(dartSass);
 
 export const assets = () => {
   return src(['app/assets/**/*.*', '!app/assets/img/**/*.*'], {since: lastRun('assets')})
@@ -48,23 +49,24 @@ export const fInclude = () => {
 };
 
 export const stylesLibs = () => {
-  return src('app/styl/libs.styl')
+  return src('app/scss/libs.scss')
     .pipe(plumber({
       errorHandler: notify.onError(err => ({
         title: 'Styles libs',
         message: err.message
       }))
     }))
-    .pipe(stylus({
-      use: [nib()],
-      'include css': true
-    }))
+    .pipe(
+      sass({
+        'include css': true,
+      })
+    )
     .pipe(cleanCss({compatibility:'ie8'}))
     .pipe(dest('dist/css'))
 };
 
 export const styles = () => {
-  return src('app/styl/bundle.styl')
+  return src('app/scss/bundle.scss')
     .pipe(plumber({
       errorHandler: notify.onError(err => ({
         title: 'Styles',
@@ -73,10 +75,11 @@ export const styles = () => {
     }))
     .pipe(gulpIf(!PRODUCTION, sourcemaps.init()))
     .pipe(debug({title: 'src'}))
-    .pipe(stylus({
-      use: [nib()],
-      'include css': true
-    }))
+    .pipe(
+      sass({
+        'include css': true,
+      })
+    )
     .pipe(debug({title: 'stylus'}))
     .pipe(gulpIf(PRODUCTION, cleanCss({compatibility:'ie8'})))
     .pipe(gulpIf(!PRODUCTION, sourcemaps.write()))
@@ -172,7 +175,7 @@ export const removedist = () => {
 };
 
 export const watchForChanges = () => {
-  watch('app/styl/**/*', styles);
+  watch('app/scss/**/*', styles);
   watch('app/js/**/*.js', series(js, reload));
   watch(['app/assets/**/*.*', '!app/assets/html/**/*.*', '!app/img/**/*.*'], series(assets, reload));
   watch('app/html/**/*.html', series(fInclude, reload));

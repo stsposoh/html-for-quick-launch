@@ -1,10 +1,13 @@
 {
+  "overrides": {
+    "graceful-fs": "^4.2.11"
+  },
   "name": "gulp-template",
   "version": "1.0.0",
   "description": "HTML5 template. Used es6, stylus, gulp, html templates import",
   "main": "index.js",
   "scripts": {
-    "start": "gulp",
+    "dev": "gulp",
     "build": "gulp build --prod"
   },
   "author": "Posokhov Stas",
@@ -30,11 +33,11 @@
     "gulp-newer": "^1.4.0",
     "gulp-notify": "^3.2.0",
     "gulp-plumber": "^1.2.0",
+    "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^2.6.4",
-    "gulp-stylus": "^2.7.0",
-	"gulp-svg-sprite": "^1.5.0",
+	  "gulp-svg-sprite": "^1.5.0",
     "gulp-uglify": "^3.0.1",
-    "nib": "^1.1.2",
+    "sass": "^1.64.2",
     "yargs": "^14.2.0"
   }
 }
