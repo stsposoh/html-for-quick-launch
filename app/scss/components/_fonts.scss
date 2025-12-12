@@ -1,0 +1,23 @@
+@use 'mixins' as *;
+
+// ============================================
+// Font Faces
+// ============================================
+
+// Weight guide:
+// 100 - Extra Light / Ultra Light
+// 200 - Light / Thin
+// 300 - Book / Demi
+// 400 - Regular / Normal
+// 500 - Medium
+// 600 - Semibold / Demibold
+// 700 - Bold
+// 800 - Extra Bold / Heavy
+// 900 - Black / Ultra Black
+
+// Example:
+// @include font-face(FontName, folder/filename, weight, style, woff2 woff);
+
+@include font-face(Gilroy, gilroy/Gilroy-Regular, 400, normal, woff2);
+@include font-face(Gilroy, gilroy/Gilroy-Bold, 700, normal, woff2);
+

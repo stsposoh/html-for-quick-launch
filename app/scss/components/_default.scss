@@ -1,0 +1,144 @@
+@use 'mixins' as *;
+
+// ============================================
+// Base / Reset Styles
+// ============================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  @include smooth-scroll;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  min-width: 320px;
+  margin: 0;
+  background-color: var(--color-bg);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  padding-top: 48px;
+
+  @include md {
+    padding-top: 60px;
+  }
+}
+
+// Main content area
+.app-content {
+  flex: 1 0 auto;
+}
+
+// Paragraphs
+p {
+  margin-block: 0 1em;
+}
+
+// Images
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// SVG transitions
+svg path,
+svg polygon,
+svg rect {
+  transition: var(--transition-base);
+}
+
+// Links
+a {
+  display: inline-block;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: color var(--transition-base), text-decoration-color var(--transition-base);
+
+  @include hover {
+    text-decoration-color: currentColor;
+  }
+
+  @include focus-visible;
+}
+
+// Headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: var(--font-family);
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+h4 {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+}
+
+// Video
+video {
+  max-width: 100%;
+}
+
+// Video frame (16:9 aspect ratio)
+.video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+
+  iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// Selection
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+}
+
+// Focus styles for keyboard navigation
+:focus:not(:focus-visible) {
+  outline: none;
+}
+

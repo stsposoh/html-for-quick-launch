@@ -1,3 +1,9 @@
-//Load libs
-@import "../../node_modules/normalize.css/normalize.css";
-//@import "../../node_modules/swiper/swiper-bundle.min.css";
+// ============================================
+// CSS Libraries
+// ============================================
+
+// Modern Normalize (lightweight CSS reset for modern browsers)
+@use '../../node_modules/modern-normalize/modern-normalize.css';
+
+// Add other CSS libraries here:
+// @use '../../node_modules/swiper/swiper-bundle.min.css';

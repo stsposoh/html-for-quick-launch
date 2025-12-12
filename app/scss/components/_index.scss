@@ -1,0 +1,21 @@
+// ============================================
+// Components Index
+// ============================================
+// This file allows importing all components with one line:
+// @use 'components';
+
+// Order matters!
+@forward 'vars';
+@forward 'mixins';
+@forward 'fonts';
+@forward 'default';
+@forward 'header';
+@forward 'menu';
+@forward 'sliders';
+@forward 'components';
+@forward 'sections';
+@forward 'footer';
+@forward 'modals';
+@forward 'forms';
+@forward 'cards';
+@forward 'anims';

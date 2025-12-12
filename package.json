@@ -1,43 +1,39 @@
 {
-  "overrides": {
-    "graceful-fs": "^4.2.11"
-  },
-  "name": "gulp-template",
-  "version": "1.0.0",
-  "description": "HTML5 template. Used es6, stylus, gulp, html templates import",
-  "main": "index.js",
+  "name": "html-quick-launch",
+  "version": "2.0.0",
+  "description": "Modern HTML5 template with Gulp, SCSS, ES modules",
+  "type": "module",
   "scripts": {
     "dev": "gulp",
-    "build": "gulp build --prod"
+    "build": "gulp build --prod",
+    "clean": "rimraf dist"
   },
-  "author": "Posokhov Stas",
+  "author": "Solar Digital",
   "license": "ISC",
   "dependencies": {
-    "normalize.css": "^8.0.1"
+    "modern-normalize": "^3.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/register": "^7.6.2",
-    "browser-sync": "^2.26.7",
-    "del": "^5.0.0",
-    "gulp": "^4.0.0",
-    "gulp-babel": "^8.0.0",
-    "gulp-clean-css": "^4.2.0",
+    "browser-sync": "^3.0.3",
+    "gulp": "^5.0.0",
+    "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
-    "gulp-debug": "^4.0.0",
-    "gulp-file-include": "^2.1.0",
+    "gulp-debug": "^5.0.1",
+    "gulp-file-include": "^2.3.0",
     "gulp-group-css-media-queries": "^1.2.2",
     "gulp-if": "^3.0.0",
-    "gulp-imagemin": "^6.1.1",
     "gulp-newer": "^1.4.0",
-    "gulp-notify": "^3.2.0",
-    "gulp-plumber": "^1.2.0",
+    "gulp-notify": "^4.0.0",
+    "gulp-plumber": "^1.2.1",
     "gulp-sass": "^5.1.0",
-    "gulp-sourcemaps": "^2.6.4",
-	  "gulp-svg-sprite": "^1.5.0",
-    "gulp-uglify": "^3.0.1",
-    "sass": "^1.64.2",
-    "yargs": "^14.2.0"
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-svg-sprite": "^2.0.3",
+    "gulp-terser": "^2.1.0",
+    "rimraf": "^6.0.1",
+    "sass": "^1.83.0",
+    "yargs": "^17.7.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

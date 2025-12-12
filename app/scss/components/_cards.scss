@@ -1,0 +1,131 @@
+@use 'mixins' as *;
+
+// ============================================
+// Cards
+// ============================================
+
+.card {
+  background-color: var(--color-bg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+
+  @include hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+}
+
+.card--bordered {
+  border: 1px solid var(--color-border);
+}
+
+.card--shadow {
+  box-shadow: var(--shadow-md);
+}
+
+.card__image {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .card:hover & img {
+    transform: scale(1.05);
+  }
+}
+
+.card__body {
+  padding: 20px;
+
+  @include md {
+    padding: 24px;
+  }
+}
+
+.card__title {
+  font-size: 1.125rem;
+  margin-bottom: 8px;
+  text-transform: none;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+
+    @include hover {
+      color: var(--color-accent);
+    }
+  }
+}
+
+.card__text {
+  color: var(--color-text-secondary);
+  font-size: 0.9375rem;
+  margin-bottom: 16px;
+  @include truncate(3);
+}
+
+.card__meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.card__footer {
+  padding: 16px 20px;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include md {
+    padding: 16px 24px;
+  }
+}
+
+// Product card variation
+.product-card {
+  .card__image {
+    aspect-ratio: 1;
+    background-color: var(--color-bg-secondary);
+  }
+}
+
+.product-card__price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.product-card__old-price {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  text-decoration: line-through;
+  margin-left: 8px;
+}
+
+// Card grid
+.card-grid {
+  display: grid;
+  gap: 24px;
+
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include lg {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include xl {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
