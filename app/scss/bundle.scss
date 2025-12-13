@@ -1,7 +1,19 @@
-// ============================================
-// Main Bundle
-// ============================================
-// Modern SCSS with @use/@forward
-// https://sass-lang.com/documentation/at-rules/use
+// Base
+@import 'base/fonts';
+@import 'base/default';
 
-@use 'components';
+// Layout
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/menu';
+
+// Components
+@import 'components/components';
+@import 'components/cards';
+@import 'components/forms';
+@import 'components/modals';
+@import 'components/sliders';
+
+// Sections
+@import 'sections/sections';
+@import 'sections/anims';

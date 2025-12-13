@@ -17,6 +17,7 @@ import svgSprite from 'gulp-svg-sprite';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { rimraf } from 'rimraf';
+import rename from 'gulp-rename';
 
 const { src, dest, lastRun, watch, series, parallel } = gulp;
 const argv = yargs(hideBin(process.argv)).argv;
@@ -24,14 +25,18 @@ const PRODUCTION = argv.prod;
 const server = browserSync.create();
 const sass = gulpSass(dartSass);
 
-// Sass options for modern API
+// Sass options
 const sassOptions = {
-  silenceDeprecations: ['legacy-js-api']
+  silenceDeprecations: ['legacy-js-api', 'import']
 };
 
 // Copy assets (fonts, favicon, etc.)
 export const assets = () => {
-  return src(['app/assets/**/*.*', '!app/assets/img/**/*.*'], { since: lastRun(assets), encoding: false })
+  return src([
+    'app/assets/**/*.*',
+    '!app/assets/images/**/*.*',
+    '!app/assets/svg-for-sprite/**/*.*'
+  ], { since: lastRun(assets), encoding: false })
     .pipe(newer('dist'))
     .pipe(dest('dist'));
 };
@@ -77,7 +82,6 @@ export const styles = () => {
       }))
     }))
     .pipe(gulpIf(!PRODUCTION, sourcemaps.init()))
-    .pipe(debug({ title: 'SCSS:' }))
     .pipe(sass.sync(sassOptions).on('error', sass.logError))
     .pipe(gulpIf(PRODUCTION, gcmq()))
     // .pipe(gulpIf(PRODUCTION, cleanCss()))  // Uncomment to minify CSS
@@ -119,22 +123,27 @@ export const js = () => {
 
 // Create SVG sprite
 export const svg = () => {
-  return src('app/assets/svg-for-sprite/*.svg')
+  return src('app/assets/svg-for-sprite/*.svg', { allowEmpty: true })
     .pipe(svgSprite({
       mode: {
         stack: {
-          sprite: '../svg-sprite.svg'
+          sprite: 'sprite.svg'
         }
       }
     }))
-    .pipe(dest('app/assets/img/svg/'));
+    .pipe(rename((path) => {
+      if (path.dirname === 'stack') {
+        path.dirname = '';
+      }
+    }))
+    .pipe(dest('dist/images/'));
 };
 
 // Copy images
 export const images = () => {
-  return src('app/assets/img/**/*.{jpg,jpeg,png,svg,gif,webp,avif}', { encoding: false })
-    .pipe(newer('dist/img'))
-    .pipe(dest('dist/img'));
+  return src('app/assets/images/**/*.{jpg,jpeg,png,svg,gif,webp,avif}', { encoding: false })
+    .pipe(newer('dist/images'))
+    .pipe(dest('dist/images'));
 };
 
 // Start dev server
@@ -163,9 +172,9 @@ export const clean = async () => {
 export const watchFiles = () => {
   watch('app/scss/**/*.scss', styles);
   watch('app/js/**/*.js', series(js, reload));
-  watch(['app/assets/**/*.*', '!app/assets/img/**/*.*'], series(assets, reload));
+  watch(['app/assets/**/*.*', '!app/assets/images/**/*.*', '!app/assets/svg-for-sprite/**/*.*'], series(assets, reload));
   watch('app/html/**/*.html', series(html, reload));
-  watch('app/assets/img/**/*.{jpg,jpeg,png,svg,gif,webp,avif}', series(images, reload));
+  watch('app/assets/images/**/*.{jpg,jpeg,png,svg,gif,webp,avif}', series(images, reload));
   watch('app/assets/svg-for-sprite/*.svg', svg);
 };
 

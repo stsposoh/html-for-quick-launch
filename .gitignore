@@ -4,25 +4,23 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Editor directories and files
-.idea
-.vscode
+# Build output
+dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.idea/
+.vscode/
+.cursor/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 
-dist/
-.cursor/
-# app/assets/html/404.html
-# app/assets/html/account.html
-# app/assets/html/bestsellers.html
-# app/assets/html/fossils.html
-# app/assets/html/jewellery.html
-# app/assets/html/message.html
-# app/assets/html/minerals.html
-# app/assets/html/wish-list.html
-# app/assets/html/comparison.html
-# app/assets/html/special-offers.html
-# app/assets/html/new-products.html
-# app/assets/html/sale.html
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

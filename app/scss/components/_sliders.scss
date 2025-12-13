@@ -1,8 +1,5 @@
-@use 'mixins' as *;
-
-// ============================================
-// Sliders / Carousels
-// ============================================
+@use '../utils/vars' as vars;
+@use '../utils/mixins' as mix;
 
 // Base slider styles (for use with Swiper, Splide, etc.)
 .slider {
@@ -12,7 +9,7 @@
 
 .slider__track {
   display: flex;
-  transition: transform var(--transition-base);
+  transition: transform 0.3s ease;
 }
 
 .slider__slide {
@@ -25,24 +22,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  margin-top: 24px;
+    gap: 1.6rem;
+    margin-top: 2.4rem;
 }
 
 .slider__button {
-  @include reset-button;
-  @include flex-center;
-  width: 48px;
-  height: 48px;
+  @include mix.reset-button;
+  @include mix.flex-center;
+  width: 4.8rem;
+  height: 4.8rem;
   border-radius: 50%;
-  background-color: var(--color-bg);
-  border: 1px solid var(--color-border);
-  color: var(--color-text);
-  transition: var(--transition-fast);
+  background-color: vars.$color-bg;
+  border: 1px solid vars.$color-border;
+  color: vars.$color-text;
+  transition: 0.15s ease;
 
-  @include hover {
-    background-color: var(--color-accent);
-    border-color: var(--color-accent);
+  @include mix.hover {
+    background-color: vars.$color-accent;
+    border-color: vars.$color-accent;
     color: white;
   }
 
@@ -52,8 +49,8 @@
   }
 
   svg {
-    width: 20px;
-    height: 20px;
+    width: 2rem;
+    height: 2rem;
   }
 }
 
@@ -68,81 +65,81 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  margin-top: 24px;
+    gap: 0.8rem;
+    margin-top: 2.4rem;
 }
 
 .slider__dot {
-  @include reset-button;
-  width: 10px;
-  height: 10px;
+  @include mix.reset-button;
+  width: 1rem;
+  height: 1rem;
   border-radius: 50%;
-  background-color: var(--color-border);
-  transition: var(--transition-fast);
+  background-color: vars.$color-border;
+  transition: 0.15s ease;
 
-  @include hover {
-    background-color: var(--color-text-secondary);
+  @include mix.hover {
+    background-color: vars.$color-text-secondary;
   }
 
   &--active {
-    background-color: var(--color-accent);
-    width: 24px;
-    border-radius: 5px;
+    background-color: vars.$color-accent;
+    width: 2.4rem;
+    border-radius: 0.5rem;
   }
 }
 
 // Hero slider variation
 .hero-slider {
   .slider__slide {
-    min-height: 400px;
+    min-height: 40rem;
 
-    @include md {
-      min-height: 500px;
+    @include mix.md {
+      min-height: 50rem;
     }
 
-    @include lg {
-      min-height: 600px;
+    @include mix.lg {
+      min-height: 60rem;
     }
   }
 }
 
 .hero-slider__content {
-  @include container;
-  @include flex-center;
+  @include mix.container;
+  @include mix.flex-center;
   flex-direction: column;
   text-align: center;
   height: 100%;
-  padding-block: 60px;
+    padding-block: 6rem;
 }
 
 .hero-slider__title {
-  margin-bottom: 16px;
+    margin-bottom: 1.6rem;
 }
 
 .hero-slider__text {
-  max-width: 600px;
-  margin-bottom: 24px;
-  color: var(--color-text-secondary);
+  max-width: 60rem;
+    margin-bottom: 2.4rem;
+  color: vars.$color-text-secondary;
 }
 
 // Thumbnails slider
 .thumbnails {
   display: flex;
-  gap: 12px;
-  margin-top: 16px;
+    gap: 1.2rem;
+    margin-top: 1.6rem;
 }
 
 .thumbnail {
-  @include reset-button;
-  width: 80px;
-  height: 80px;
-  border-radius: var(--radius-md);
+  @include mix.reset-button;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 0.8rem;
   overflow: hidden;
-  border: 2px solid transparent;
-  transition: border-color var(--transition-fast);
+  border: 0.2rem solid transparent;
+  transition: border-color 0.15s ease;
 
   &--active {
-    border-color: var(--color-accent);
+    border-color: vars.$color-accent;
   }
 
   img {
@@ -151,4 +148,3 @@
     object-fit: cover;
   }
 }
-

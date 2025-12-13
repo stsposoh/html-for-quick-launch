@@ -1,8 +1,5 @@
-@use 'mixins' as *;
-
-// ============================================
-// Page Sections
-// ============================================
+@use '../utils/vars' as vars;
+@use '../utils/mixins' as mix;
 
 // Hero section
 .hero {
@@ -10,43 +7,43 @@
   min-height: 50vh;
   display: flex;
   align-items: center;
-  background-color: var(--color-bg-secondary);
+  background-color: vars.$color-bg-secondary;
   overflow: hidden;
 
-  @include md {
+  @include mix.md {
     min-height: 60vh;
   }
 }
 
 .hero__inner {
-  @include container;
+  @include mix.container;
   position: relative;
   z-index: 1;
-  padding-block: 60px;
+    padding-block: 6rem;
 
-  @include md {
-    padding-block: 80px;
+  @include mix.md {
+    padding-block: 8rem;
   }
 }
 
 .hero__content {
-  max-width: 600px;
+  max-width: 60rem;
 }
 
 .hero__title {
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 }
 
 .hero__text {
   font-size: 1.125rem;
-  color: var(--color-text-secondary);
-  margin-bottom: 32px;
+  color: vars.$color-text-secondary;
+    margin-bottom: 3.2rem;
 }
 
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+    gap: 1.6rem;
 }
 
 .hero__bg {
@@ -63,85 +60,85 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, var(--color-bg) 0%, transparent 100%);
+    background: linear-gradient(90deg, vars.$color-bg 0%, transparent 100%);
   }
 }
 
 // Features section
 .features {
-  @include container;
+  @include mix.container;
 }
 
 .features__grid {
   display: grid;
-  gap: 32px;
+    gap: 3.2rem;
 
-  @include sm {
+  @include mix.sm {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @include lg {
+  @include mix.lg {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 .feature {
   text-align: center;
-  padding: 32px 24px;
+  padding: 3.2rem 2.4rem;
 }
 
 .feature__icon {
-  @include flex-center;
-  width: 64px;
-  height: 64px;
+  @include mix.flex-center;
+  width: 6.4rem;
+  height: 6.4rem;
   margin-inline: auto;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
   background-color: rgba(250, 143, 33, 0.1);
-  border-radius: var(--radius-lg);
-  color: var(--color-accent);
+  border-radius: 1.6rem;
+  color: vars.$color-accent;
 
   svg {
-    width: 32px;
-    height: 32px;
+    width: 3.2rem;
+    height: 3.2rem;
   }
 }
 
 .feature__title {
   font-size: 1.125rem;
   text-transform: none;
-  margin-bottom: 12px;
+    margin-bottom: 1.2rem;
 }
 
 .feature__text {
-  color: var(--color-text-secondary);
+  color: vars.$color-text-secondary;
   margin: 0;
 }
 
 // CTA section
 .cta {
-  background-color: var(--color-accent);
+  background-color: vars.$color-accent;
   color: white;
 }
 
 .cta__inner {
-  @include container;
+  @include mix.container;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding-block: 60px;
-  gap: 24px;
+    padding-block: 6rem;
+    gap: 2.4rem;
 
-  @include md {
+  @include mix.md {
     flex-direction: row;
     justify-content: space-between;
     text-align: left;
-    padding-block: 48px;
+    padding-block: 4.8rem;
   }
 }
 
 .cta__title {
-  margin-bottom: 8px;
+    margin-bottom: 0.8rem;
 }
 
 .cta__text {
@@ -151,33 +148,33 @@
 
 .cta .btn {
   background-color: white;
-  color: var(--color-accent);
+  color: vars.$color-accent;
 
-  @include hover {
-    background-color: var(--color-text);
+  @include mix.hover {
+    background-color: vars.$color-text;
     color: white;
   }
 }
 
 // Testimonials
 .testimonials {
-  background-color: var(--color-bg-secondary);
+  background-color: vars.$color-bg-secondary;
 }
 
 .testimonial {
-  max-width: 700px;
+  max-width: 70rem;
   margin-inline: auto;
   text-align: center;
-  padding: 40px 24px;
+    padding: 4rem 2.4rem;
 }
 
 .testimonial__quote {
   font-size: 1.25rem;
   font-style: italic;
   line-height: 1.6;
-  margin-bottom: 24px;
+    margin-bottom: 2.4rem;
 
-  @include md {
+  @include mix.md {
     font-size: 1.5rem;
   }
 }
@@ -186,12 +183,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+    gap: 1.6rem;
 }
 
 .testimonial__avatar {
-  width: 56px;
-  height: 56px;
+  width: 5.6rem;
+  height: 5.6rem;
   border-radius: 50%;
   overflow: hidden;
 
@@ -212,6 +209,5 @@
 
 .testimonial__role {
   font-size: 0.875rem;
-  color: var(--color-text-secondary);
+  color: vars.$color-text-secondary;
 }
-

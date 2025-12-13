@@ -5,7 +5,7 @@ Modern HTML5 template for quick start front-end development.
 ## Tech Stack
 
 - **Gulp 5** — build system
-- **Dart Sass** — modern SCSS with `@use/@forward`
+- **Dart Sass** — SCSS compilation
 - **ES Modules** — native JavaScript modules
 - **BrowserSync** — live reload & browser sync
 - **CSS Custom Properties** — theming variables
@@ -40,32 +40,60 @@ npm run clean
 
 ```
 app/
-├── assets/           # Static files (fonts, favicon)
+├── assets/
 │   ├── fonts/
-│   ├── img/
-│   └── svg-for-sprite/
+│   ├── images/
+│   └── svg-for-sprite/    # SVG icons for sprite generation
 ├── html/
-│   ├── _includes/    # HTML partials (header, footer)
-│   └── *.html        # Pages
-├── js/               # JavaScript files
-├── libs/             # External JS libraries
+│   ├── _includes/          # Partials (header, footer)
+│   └── *.html              # Pages
+├── js/                     # JavaScript (auto-bundled)
+├── libs/                   # External JS libraries
 └── scss/
-    ├── bundle.scss   # Main stylesheet
-    ├── libs.scss     # External CSS libraries
-    └── components/   # SCSS components
-        ├── _vars.scss       # Variables & CSS Custom Properties
-        ├── _mixins.scss     # Mixins
-        ├── _fonts.scss      # Font faces
-        ├── _default.scss    # Base styles
-        ├── _header.scss     # Header
-        ├── _footer.scss     # Footer
-        ├── _menu.scss       # Mobile menu
-        ├── _components.scss # UI components (buttons, badges)
-        ├── _sections.scss   # Page sections
-        ├── _cards.scss      # Cards
-        ├── _forms.scss      # Forms
-        ├── _modals.scss     # Modals
-        ├── _sliders.scss    # Sliders
-        ├── _anims.scss      # Animations
-        └── _index.scss      # Components export
+    ├── bundle.scss         # Main file (controls import order)
+    ├── libs.scss           # External CSS libraries
+    ├── utils/              # Tokens, mixins
+    ├── base/               # Fonts, reset
+    ├── layout/             # Header, footer, menu
+    ├── components/         # Buttons, cards, forms, modals
+    └── sections/           # Page sections, animations
 ```
+
+## How It Works
+
+- **SCSS**: Import order controlled by `bundle.scss`
+- **JS**: All files in `js/` bundled into `bundle.js`
+- **HTML**: Use `@@include('./_includes/_header.html')` for partials
+
+## SVG Sprite
+
+The project includes automatic SVG sprite generation using `gulp-svg-sprite`.
+
+### Usage
+
+1. **Add SVG icons** to `app/assets/svg-for-sprite/` folder
+2. **Build the sprite** — it's automatically generated during build/dev
+3. **Result** — sprite file is created at `dist/images/sprite.svg`
+
+### Using Icons in HTML
+
+Use icons with `#icon-id` syntax:
+
+```html
+<svg>
+  <use xlink:href="./images/sprite.svg#icon-name"></use>
+</svg>
+```
+
+The icon ID is generated from the SVG filename (e.g., `home-icon.svg` → `#home-icon`).
+
+### Example
+
+```html
+<!-- Place home.svg in svg-for-sprite/ -->
+<svg width="24" height="24">
+  <use xlink:href="./images/svg/stack/sprite.svg#home"></use>
+</svg>
+```
+
+**Note**: The sprite is automatically regenerated when SVG files change in dev mode.

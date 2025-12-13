@@ -1,0 +1,89 @@
+@use '../utils/vars' as vars;
+@use '../utils/mixins' as mix;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 300;
+  background-color: vars.$color-bg;
+  border-bottom: 1px solid vars.$color-border;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &--hidden {
+    transform: translateY(-100%);
+  }
+
+  &--scrolled {
+    box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
+  }
+}
+
+.header__inner {
+  @include mix.container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.8rem;
+
+  @include mix.md {
+    height: 6rem;
+  }
+}
+
+.header__logo {
+  flex-shrink: 0;
+
+  img,
+  svg {
+    height: 2.8rem;
+    width: auto;
+
+    @include mix.md {
+      height: 3.6rem;
+    }
+  }
+}
+
+.header__nav {
+  display: none;
+
+  @include mix.lg {
+    display: flex;
+    align-items: center;
+    gap: 3.2rem;
+  }
+}
+
+.header__nav-link {
+  font-weight: 500;
+  text-decoration: none;
+  color: vars.$color-text;
+  transition: color 0.15s ease;
+
+  @include mix.hover {
+    color: vars.$color-accent;
+  }
+
+  &--active {
+    color: vars.$color-accent;
+  }
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.header__burger {
+  @include mix.reset-button;
+  @include mix.flex-center;
+  width: 4rem;
+  height: 4rem;
+
+  @include mix.lg {
+    display: none;
+  }
+}

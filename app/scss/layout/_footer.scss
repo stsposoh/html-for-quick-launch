@@ -1,41 +1,38 @@
-@use 'mixins' as *;
-
-// ============================================
-// Footer
-// ============================================
+@use '../utils/vars' as vars;
+@use '../utils/mixins' as mix;
 
 .footer {
   flex-shrink: 0;
-  background-color: var(--color-text);
-  color: var(--color-bg);
-  padding-block: 40px;
+  background-color: vars.$color-text;
+  color: vars.$color-bg;
+  padding-block: 4rem;
 
-  @include md {
-    padding-block: 60px;
+  @include mix.md {
+    padding-block: 6rem;
   }
 }
 
 .footer__inner {
-  @include container;
+  @include mix.container;
 }
 
 .footer__grid {
   display: grid;
-  gap: 32px;
+  gap: 3.2rem;
 
-  @include md {
+  @include mix.md {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @include lg {
+  @include mix.lg {
     grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
+    gap: 4rem;
   }
 }
 
 .footer__column {
   h4 {
-    margin-bottom: 16px;
+    margin-bottom: 1.6rem;
     font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -43,32 +40,32 @@
 }
 
 .footer__nav {
-  @include normalize-list;
+  @include mix.normalize-list;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+    gap: 1.2rem;
 }
 
 .footer__link {
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
-  transition: color var(--transition-fast);
+  transition: color 0.15s ease;
 
-  @include hover {
-    color: var(--color-bg);
+  @include mix.hover {
+    color: vars.$color-bg;
   }
 }
 
 .footer__bottom {
-  @include container;
+  @include mix.container;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-top: 40px;
-  padding-top: 24px;
+    gap: 1.6rem;
+    margin-top: 4rem;
+    padding-top: 2.4rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 
-  @include md {
+  @include mix.md {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -82,25 +79,24 @@
 
 .footer__socials {
   display: flex;
-  gap: 16px;
+  gap: 1.6rem;
 }
 
 .footer__social {
-  @include flex-center;
-  width: 40px;
-  height: 40px;
+  @include mix.flex-center;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
-  color: var(--color-bg);
-  transition: background-color var(--transition-fast);
+  color: vars.$color-bg;
+  transition: background-color 0.15s ease;
 
-  @include hover {
-    background-color: var(--color-accent);
+  @include mix.hover {
+    background-color: vars.$color-accent;
   }
 
   svg {
-    width: 20px;
-    height: 20px;
+    width: 2rem;
+    height: 2rem;
   }
 }
-

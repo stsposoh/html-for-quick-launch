@@ -1,19 +1,15 @@
-@use 'vars' as *;
-@use 'mixins' as *;
-
-// ============================================
-// Modals
-// ============================================
+@use '../utils/vars' as vars;
+@use '../utils/mixins' as mix;
 
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  z-index: $z-modal-backdrop;
+  z-index: 400;
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 0;
   visibility: hidden;
-  transition: opacity var(--transition-base), visibility var(--transition-base);
-  backdrop-filter: blur(4px);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  backdrop-filter: blur(0.4rem);
 
   &--visible {
     opacity: 1;
@@ -25,19 +21,19 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  z-index: $z-modal;
+  z-index: 500;
   transform: translate(-50%, -50%) scale(0.95);
-  width: calc(100% - 32px);
-  max-width: 500px;
-  max-height: calc(100vh - 48px);
-  max-height: calc(100dvh - 48px);
-  background-color: var(--color-bg);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
+  width: calc(100% - 3.2rem);
+  max-width: 50rem;
+  max-height: calc(100vh - 4.8rem);
+  max-height: calc(100dvh - 4.8rem);
+  background-color: vars.$color-bg;
+  border-radius: 1.6rem;
+  box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.1);
   overflow: hidden;
   opacity: 0;
   visibility: hidden;
-  transition: opacity var(--transition-base), visibility var(--transition-base), transform var(--transition-base);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
 
   &--visible {
     opacity: 1;
@@ -46,11 +42,11 @@
   }
 
   &--lg {
-    max-width: 700px;
+    max-width: 70rem;
   }
 
   &--xl {
-    max-width: 900px;
+    max-width: 90rem;
   }
 
   &--fullscreen {
@@ -71,8 +67,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 24px;
-  border-bottom: 1px solid var(--color-border);
+  padding: 2rem 2.4rem;
+  border-bottom: 1px solid vars.$color-border;
 }
 
 .modal__title {
@@ -83,44 +79,43 @@
 }
 
 .modal__close {
-  @include reset-button;
-  @include flex-center;
-  width: 36px;
-  height: 36px;
-  margin: -8px -8px -8px 0;
-  border-radius: var(--radius-md);
-  color: var(--color-text-secondary);
-  transition: background-color var(--transition-fast), color var(--transition-fast);
+  @include mix.reset-button;
+  @include mix.flex-center;
+  width: 3.6rem;
+  height: 3.6rem;
+  margin: -0.8rem -0.8rem -0.8rem 0;
+  border-radius: 0.8rem;
+  color: vars.$color-text-secondary;
+  transition: background-color 0.15s ease, color 0.15s ease;
 
-  @include hover {
-    background-color: var(--color-bg-secondary);
-    color: var(--color-text);
+  @include mix.hover {
+    background-color: vars.$color-bg-secondary;
+    color: vars.$color-text;
   }
 
   svg {
-    width: 20px;
-    height: 20px;
+    width: 2rem;
+    height: 2rem;
   }
 }
 
 .modal__body {
-  padding: 24px;
+  padding: 2.4rem;
   overflow-y: auto;
-  max-height: calc(100vh - 200px);
-  max-height: calc(100dvh - 200px);
+  max-height: calc(100vh - 20rem);
+  max-height: calc(100dvh - 20rem);
 }
 
 .modal__footer {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 12px;
-  padding: 16px 24px;
-  border-top: 1px solid var(--color-border);
+    gap: 1.2rem;
+    padding: 1.6rem 2.4rem;
+  border-top: 1px solid vars.$color-border;
 }
 
 // Lock body scroll when modal is open
 body.modal-open {
   overflow: hidden;
 }
-
