@@ -67,7 +67,7 @@ app/
 
 ## SVG Sprite
 
-The project includes automatic SVG sprite generation using `gulp-svg-sprite`.
+The project includes automatic SVG sprite generation using `gulp-svg-sprite` in **symbol mode**.
 
 ### Usage
 
@@ -80,8 +80,8 @@ The project includes automatic SVG sprite generation using `gulp-svg-sprite`.
 Use icons with `#icon-id` syntax:
 
 ```html
-<svg>
-  <use xlink:href="./images/sprite.svg#icon-name"></use>
+<svg width="24" height="24">
+  <use href="./images/sprite.svg#icon-name"></use>
 </svg>
 ```
 
@@ -92,7 +92,7 @@ The icon ID is generated from the SVG filename (e.g., `home-icon.svg` → `#home
 ```html
 <!-- Place home.svg in svg-for-sprite/ -->
 <svg width="24" height="24">
-  <use xlink:href="./images/svg/stack/sprite.svg#home"></use>
+  <use href="./images/sprite.svg#home"></use>
 </svg>
 ```
 

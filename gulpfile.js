@@ -126,14 +126,11 @@ export const svg = () => {
   return src('app/assets/svg-for-sprite/*.svg', { allowEmpty: true })
     .pipe(svgSprite({
       mode: {
-        stack: {
-          sprite: 'sprite.svg'
+        symbol: {
+          dest: '.',
+          sprite: 'sprite.svg',
+          example: false
         }
-      }
-    }))
-    .pipe(rename((path) => {
-      if (path.dirname === 'stack') {
-        path.dirname = '';
       }
     }))
     .pipe(dest('dist/images/'));
